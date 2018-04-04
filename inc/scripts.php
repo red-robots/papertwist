@@ -24,6 +24,12 @@ function acstarter_scripts() {
 			array(), '20120206', 
 			true 
 		);
+		
+	wp_register_script(
+		'font-awesome',
+		get_template_directory_uri()."/assets/svg-with-js/js/fontawesome-all.js",
+		array(), '1.0' );
+	wp_enqueue_script('font-awesome');
 
 
 
