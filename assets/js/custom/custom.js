@@ -80,4 +80,14 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	new WOW().init();
 
+	$('#bella-search >.search').click(function(){
+		$('#bella-search >form').toggle(200);
+		var $search = $('#bella-search');
+		if($search.hasClass('toggled')){
+			$search.removeClass('toggled');
+		} else {
+			$search.addClass('toggled');
+		}
+	});
+
 });// END #####################################    END
