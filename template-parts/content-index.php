@@ -50,22 +50,26 @@
     $query = new WP_Query($args);
     if($query->have_posts()):?>
         <section class="row-2">
-            <div class="wrapper cap">
-                <?php while($query->have_posts()):$query->the_post();?>
-                    <?php wc_get_template_part( 'content', 'product' ); ?>
-                <?php endwhile;?>
+            <div class="wrapper cap clear-bottom">
+                <ul>
+                    <?php while($query->have_posts()):$query->the_post();?>
+                        <?php wc_get_template_part( 'content', 'product' ); ?>
+                    <?php endwhile;?>
+                </ul>
             </div><!--.wrapper.cap-->
         </section><!--.section-2-->
         <?php wp_reset_postdata();
     endif;?>
-    <?php $repeater = get_field("row_3_images");
+    <?php $post = get_post(22);
+	setup_postdata($post);
+    $repeater = get_field("row_3_images");
     if($repeater):?>
         <section class="row-3">
-            <div class="wrapper cap">
+            <div class="wrapper cap clear-bottom">
                 <?php foreach($repeater as $row):
                     $image = $row['image'];
                     if($image):?>
-                        <img src="<?php echo $image['sizes']['large'];?>" alt="<?php echo $iamge['alt'];?>">
+                        <img src="<?php echo $image['sizes']['large'];?>" alt="<?php echo $image['alt'];?>">
                     <?php endif;?>
                 <?php endforeach;?>
             </div><!--.wrapper.cap-->
@@ -77,7 +81,7 @@
                 <i class="fa fa-instagram"></i>
             </div><!--.row-1-->
             <div class="row-2">
-                <?php echo do_shortcode("[instagram-feed]");?>
+                <?php // echo do_shortcode("[instagram-feed]");?>
             </div><!--.row-2-->
             <?php $instagram_link = get_field("instagram_link","option");
             $instagram_text = get_field("instagram_text","option");
