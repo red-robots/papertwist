@@ -38,6 +38,9 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	$('.flexslider').flexslider({
 		animation: "slide",
+		smoothHeight: true,
+		controlNav: false,
+		directionNav: false, 
 	}); // end register flexslider
 	
 	/*

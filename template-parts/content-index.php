@@ -78,7 +78,7 @@
     <section class="row-4">
         <div class="wrapper cap">
             <div class="row-1">
-                <i class="fa fa-instagram"></i>
+                <i class="fab fa-instagram"></i>
             </div><!--.row-1-->
             <div class="row-2">
                 <?php // echo do_shortcode("[instagram-feed]");?>
@@ -87,7 +87,7 @@
             $instagram_text = get_field("instagram_text","option");
             if($instagram_link&&$instagram_text):?>
                 <div class="row-3">
-                    <a href="<?php echo $instagram_link;?>"><?php echo $instagram_text;?></a>
+                    <a class="button" href="<?php echo $instagram_link;?>"><?php echo $instagram_text;?></a>
                 </div><!--.row-3-->
             <?php endif;?>
         </div><!--.wrapper.cap-->
