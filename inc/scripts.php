@@ -2,8 +2,8 @@
 /**
  * Enqueue scripts and styles.
  */
-function acstarter_scripts() {
-	wp_enqueue_style( 'acstarter-style', get_stylesheet_uri() );
+function bellaworks_scripts() {
+	wp_enqueue_style( 'bellaworks-style', get_stylesheet_uri() );
 
 	wp_deregister_script('jquery');
 		wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js', false, '1.10.2', true);
@@ -12,14 +12,14 @@ function acstarter_scripts() {
 	
 
 	wp_enqueue_script( 
-			'acstarter-blocks', 
+			'bellaworks-blocks', 
 			get_template_directory_uri() . '/assets/js/vendors.js', 
 			array(), '20120206', 
 			true 
 		);
 
 	wp_enqueue_script( 
-			'acstarter-custom', 
+			'bellaworks-custom', 
 			get_template_directory_uri() . '/assets/js/custom.js', 
 			array(), '20120206', 
 			true 
@@ -37,4 +37,4 @@ function acstarter_scripts() {
 		wp_enqueue_script( 'comment-reply' );
 	}
 }
-add_action( 'wp_enqueue_scripts', 'acstarter_scripts' );
+add_action( 'wp_enqueue_scripts', 'bellaworks_scripts' );

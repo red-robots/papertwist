@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ACStarter
+ * @package bellaworks
  */
 
 get_header(); ?>

@@ -9,26 +9,19 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ACStarter
+ * @package bellaworks
  */
 
 get_header(); ?>
-
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
-		<?php
-			/* Start the Loop */
-			$post = get_post(22);
+		<?php $post = get_post(22);
 			if ( $post ) : 
 				setup_postdata($post);
-
 				get_template_part( 'template-parts/content', 'index' );
-
 			endif; ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
 <?php
 get_footer();

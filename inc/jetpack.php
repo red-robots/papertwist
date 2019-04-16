@@ -4,7 +4,7 @@
  *
  * @link https://jetpack.me/
  *
- * @package ACStarter
+ * @package bellaworks
  */
 
 /**
@@ -13,23 +13,23 @@
  * See: https://jetpack.me/support/infinite-scroll/
  * See: https://jetpack.me/support/responsive-videos/
  */
-function acstarter_jetpack_setup() {
+function bellaworks_jetpack_setup() {
 	// Add theme support for Infinite Scroll.
 	add_theme_support( 'infinite-scroll', array(
 		'container' => 'main',
-		'render'    => 'acstarter_infinite_scroll_render',
+		'render'    => 'bellaworks_infinite_scroll_render',
 		'footer'    => 'page',
 	) );
 
 	// Add theme support for Responsive Videos.
 	add_theme_support( 'jetpack-responsive-videos' );
 }
-add_action( 'after_setup_theme', 'acstarter_jetpack_setup' );
+add_action( 'after_setup_theme', 'bellaworks_jetpack_setup' );
 
 /**
  * Custom render function for Infinite Scroll.
  */
-function acstarter_infinite_scroll_render() {
+function bellaworks_infinite_scroll_render() {
 	while ( have_posts() ) {
 		the_post();
 		if ( is_search() ) :

@@ -1,10 +1,10 @@
 <?php
 /**
- * ACStarter functions and definitions.
+ * bellaworks functions and definitions.
  *
  * @link https://developer.wordpress.org/themes/basics/theme-functions/
  *
- * @package ACStarter
+ * @package bellaworks
  */
 
 /**

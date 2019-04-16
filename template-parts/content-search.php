@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  *
- * @package ACStarter
+ * @package bellaworks
  */
 
 ?>
@@ -15,7 +15,7 @@
 
 		<?php if ( 'post' === get_post_type() ) : ?>
 		<div class="entry-meta">
-			<?php acstarter_posted_on(); ?>
+			<?php bellaworks_posted_on(); ?>
 		</div><!-- .entry-meta -->
 		<?php endif; ?>
 	</header><!-- .entry-header -->
@@ -25,6 +25,6 @@
 	</div><!-- .entry-summary -->
 
 	<footer class="entry-footer">
-		<?php acstarter_entry_footer(); ?>
+		<?php bellaworks_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
