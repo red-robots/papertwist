@@ -25,6 +25,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 }
 ?>
 <li <?php wc_product_class(); ?>>
+	<div class="product-inside clear">
 	<?php
 	/**
 	 * Hook: woocommerce_before_shop_loop_item.
@@ -64,4 +65,5 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	 */
 	do_action( 'woocommerce_after_shop_loop_item' );
 	?>
+	</div>
 </li>

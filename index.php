@@ -11,17 +11,14 @@
  *
  * @package bellaworks
  */
-
+$home_page_id = get_home_page_id();
 get_header(); ?>
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
-		<?php $post = get_post(22);
-			if ( $post ) : 
-				setup_postdata($post);
-				get_template_part( 'template-parts/content', 'index' );
-			endif; ?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+<div id="primary" class="full-content-area clear">
+	<?php $post = get_post($home_page_id);
+		if ( $post ) :  setup_postdata($post);
+			get_template_part( 'template-parts/slider', 'home' );
+			get_template_part( 'template-parts/content', 'index' );
+		endif; ?>
+</div><!-- #primary -->
 <?php
 get_footer();

@@ -1,112 +1,449 @@
-.template-index {
-    >.row-1 {
-        .flexslider {
-            .slides {
-                li {
-                    img {
-                        display: block;
-                        width: 100%;
-                    }
-                }
-            }
+.flexrow {
+    position: relative;
+    @media screen and (min-width: $tabwidth){
+        @include flexbox();
+        @include flexbox-wrap(wrap);
+        @include flexbox-direction(row);
+    }
+    .flexbox {
+        position: relative;
+        box-sizing: border-box;
+    }
+}
+.topwrap {
+    a {
+        position: relative;
+    }
+    @media screen and (min-width: $tabwidth){
+        display: inline-block;
+        float: right;
+    }
+    a.phone {
+        padding-left: 6px;
+    }
+    a.myaccount {
+        display: none;
+        @media screen and (min-width: $tabwidth){
+            display: inline-block;
         }
     }
-    >.row-2 {
-        background-color: $color__pt-medium-grey;
-        >.wrapper {
-            padding: 40px 0;
-            @media screen and (min-width: $tabwidth){
-                padding: 6% 0 8% 0;
-            }
-            ul {
-                margin: 0;
-                padding: 0 20px;
-                @media screen and (min-width: $tabwidth){
-                    padding: 0;
-                }
-                li {
-                    margin: 20px 0 0 0;
-                    border-bottom: 6px solid $color__pt-grey;
-                    @media screen and (min-width: $tabwidth){
-                        width: 1/4*89%;
-                        margin: 0 1.75%;
-                        float: left;
-                    }
-                    &:first-child {
-                        margin-left: 0;
-                    }
-                    &:last-child {
-                        margin-right: 0;
-                    }
-                }
-            }
+    a.cart {
+        display: inline-block;
+        font-size: 16px;
+        padding: 4px 0;
+        position: relative;
+        @media screen and (min-width: $tabwidth){
+            padding: 0 10px 0 6px;
+            top: 1px;
         }
     }
-    >.row-3 {
-        >.wrapper {
-            padding: 40px 0 20px 0;
-            @media screen and (min-width: $tabwidth){
-                padding: 4% 0 2% 0;
-            }
-            img {
-                display: block;
-                margin: 20px 0 0 0;
-                @media screen and (min-width: $tabwidth){
-                    width: 1/2*96%;
-                    float: left;
-                }
-                &:nth-child(even) {
-                    @media screen and (min-width: $tabwidth){
-                        margin: 0 0 4% 2%; 
-                    }
-                }
-                &:nth-child(odd) {
-                    @media screen and (min-width: $tabwidth){
-                        margin: 0 2% 4% 0; 
-                    }
-                }
-            }
+}
+.topsearchform {
+    position: relative;
+    width: 55%;
+    position: absolute;
+    top: 0;
+    right: 13px;
+    @include transition(all ease-out .3s);
+    @media screen and (min-width: $tabwidth){
+        display: inline-block;
+        float: left;
+        position: relative;
+        width: 25px;
+        margin-left: 1px;
+        right: 0;
+    }
+    input.searchfield {
+        border-radius: 200px;
+        -webkit-appearance: none;
+        font-size: 13px;
+        height: 26px;
+        line-height: 25px;
+        box-sizing: border-box;
+        padding: 0 10px;
+        outline: none;
+        position: relative;
+        right: 0;
+        width: 100%;
+        @include transition(all ease-out .3s);
+        @media screen and (min-width: $tabwidth){
+            position: absolute;
+            top: -1px;
+            right: -7px;
+            border: 1px solid transparent;
+            background: transparent;
+            z-index: -99;
+            opacity: 0;
+            width: 0px;
+        }
+        &:focus {
+            box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.3);
         }
     }
-    >.row-4 {
-        background-color: $color__pt-light-grey;
-        >.wrapper {
-            padding: 40px 0;
+    &.show-field {
+        width: 100%;
+        @media screen and (min-width: $tabwidth){
+            width: 230px;
+        }
+        input.searchfield {
+            background:#FFF;
+            border: 1px solid #919191;
+            opacity: 1;
+            width: 100%;
+            z-index: 5;
+        }
+    }
+    .search-icon {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 30px;
+        height: 100%;
+        cursor: pointer;
+        z-index: 10;
+        @include transition(all ease-out .3s);
+        .icon {
+            display: inline-block;
+            position: relative;
+            color: $color__text-main;
+            font-size: 15px;
+            top: 1px;
+            right: -6px;
             @media screen and (min-width: $tabwidth){
-                padding: 4% 0;
+                font-size: 16px;
+                right: 0;
             }
-            >.row-1 {
-                text-align: center;
-                color: $color__pt-pink;
-                font-size: 35px;
-                line-height: 1;
-                @media screen and (min-width: $tabwidth){
-                    font-size: 55px;
-                }
-                .fa-instagram {
-                }
-            }
-            >.row-2 {
-                margin: 40px 0 0 0;
-                @media screen and (min-width: $tabwidth){
-                    margin: 5% 0 0 0;
-                }
+        }
+        &:hover {
+            opacity: 0.5;
+        }
+    }
+}
 
+body.home {
+    .site-content.wrapper {
+        max-width: 100%;
+        width: 100%;
+        padding: 0 0;
+    }
+}
+
+.slider-wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 330px;
+    @media screen and (min-width: $tabwidth){
+        height: 400px;
+    }
+    @media screen and (min-width: $midwidth){
+        height: 600px;
+    }
+    .flexslider, .flex-viewport {
+        width: 100%!important;
+        height: 100%!important;
+        position: relative;
+    }
+    ul.slides {
+        margin: 0 0;
+        padding: 0 0;
+        list-style: none;
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+    li.slide {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        img {
+            visibility: hidden;
+        }
+    }
+    .imagediv {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+}
+section.section {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    @media screen and (min-width: $midwidth){
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+}
+.home-featured-products {
+    background: $color__subtle_grey;
+}
+.productrow {
+    @media screen and (min-width: $tabwidth){
+        margin-left: -18px;
+        margin-right: -18px;
+    }
+}
+ul.productlist {
+    margin: 0 0;
+    padding: 0 0;
+    list-style: none;
+    width: 100%;
+    float: left;
+    @media screen and (min-width: $tabwidth){
+        @include flexbox();
+        @include flexbox-wrap(wrap);
+        @include flexbox-direction(row);
+        @include flexbox-justify(center);
+    }
+    li.product {
+        box-sizing: border-box;
+        margin: 30px 0;
+        @media screen and (min-width: $tabwidth){
+            margin: 18px 0;
+            width: 50%;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        @media screen and (min-width: $midwidth){
+            width: 25%;
+        }
+    }
+    .product-inside {
+        padding: 20px;
+        background: #FFF;
+        position: relative;
+        text-align: center;
+        @media screen and (min-width: $tabwidth){
+            height: 100%;
+            padding: 20px 20px 70px;
+        }
+        @media screen and (min-width: $midwidth){
+            padding: 30px 30px 70px;
+        }
+    }
+    .woocommerce-loop-product__link {
+        display: block;
+        color: $color__text-main;
+        text-decoration: none;
+        text-align: center;
+        width: 100%;
+        float: left;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.3;
+        margin-bottom: 15px;
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .woocommerce-loop-product__title {
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.3;
+        text-transform: uppercase;
+        margin: 10px 0 8px;
+    }
+    span.price {
+        display: block;
+        width: 100%;
+    }
+    a.button {
+        display: inline-block;
+        text-decoration: none;
+        border: 1px solid $color__pt-pink;
+        color: $color__pt-pink;
+        text-transform: uppercase;
+        font-size: 13px;
+        line-height: 1.2;
+        padding: 9px 22px 8px;
+        background: #FFF;
+        &:hover {
+            background: $color__pt-pink;
+            color: #FFF;
+        }
+        &.viewbutton {
+            padding: 9px 30px 8px;
+        }
+    }
+    .buttondiv {
+        width: 100%;
+        float: left;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        @media screen and (min-width: $tabwidth){
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin-bottom: 25px;
+        }
+    }
+}
+
+.row-3-images {
+    .flexrow {
+        @media screen and (min-width: $tabwidth){
+            margin-left: -18px;
+            margin-right: -18px;
+        }
+    }
+    .flexbox {
+        margin: 15px 0;
+        width: 100%;
+        float: left;
+        @media screen and (min-width: $tabwidth){
+            margin: 18px 0;
+            width: 50%;
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    } 
+    .imagelink, img {
+        display: block;
+        width: 100%;
+        float: left;
+    }
+}
+
+.instagram-feeds-section {
+    background: $color__pt-light-grey;
+    .flexrow {
+        @media screen and (min-width: $tabwidth){
+            margin-left: -20px;
+            margin-right: -20px;
+        }
+        @media screen and (min-width: $midwidth) {
+            margin-left: -30px;
+            margin-right: -30px;
+        }
+    }
+    .instaCol {
+        position: relative;
+        box-sizing: border-box;
+        margin: 0 0 30px;
+        @media screen and (min-width: $tabwidth){
+            width: 33.3%;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 15px 0;
+        }
+        @media screen and (min-width: $midwidth) {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+    .instagram-inner {
+        overflow: hidden;
+        position: relative;
+        .instalink {
+            display: block;
+            width: 100%;
+            float: left;
+            background: $color__pt-pink;
+        }
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+            position: relative;
+            @include transition(all ease-out .4s);
+            @media screen and (min-width: $tabwidth){
+                display: none;
             }
-            >.row-3 {
-                text-align: center;
-                margin: 40px 0 0 0;
-                @media screen and (min-width: $tabwidth){
-                    margin: 5% 0 0 0;
+        }
+        .insta-image-thumb {
+            display: block;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: none;
+            @include transition(all ease-out .4s);
+            @media screen and (min-width: $tabwidth){
+                display: block;
+                height: 250px;
+            }
+            @media screen and (min-width: $midwidth) {
+                height: 345px;
+            }
+            
+        }
+        .caption {
+            display: block;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            text-decoration: none;
+            color: #FFF;
+            text-align: center;
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.4;
+            background: $color__pt-pink;
+            visibility: hidden;
+            opacity: 0;
+            margin-bottom: -3%;
+            @include transition(all ease .4s);
+            .txtwrap {
+                display: block;
+                padding: 20px 20px;
+                position: relative;
+                z-index: 5;
+                opacity: 0;
+                top: 10px;
+                @include transition(all ease .4s);
+                @media screen and (min-width: $midwidth){
+                    padding: 20px 30px;
                 }
-                a {
-                    font-size: 20px;
-                    padding: 10px 50px;
-                    @media screen and (min-width: $tabwidth){
-                        font-size: 25px;
-                        padding: 10px 80px;
-                    }
-                }
+            }
+        }
+    }
+    .instaCol.open {
+        .caption {
+            visibility: visible;
+            opacity: 1;
+            margin-bottom: 0;
+            .txtwrap {
+                opacity: 1;
+                top: 0;
+            }
+        }
+    }
+    .instagram-icon {
+        text-align: center;
+        padding-bottom: 35px;
+        position: relative;
+        margin-top: -10px;
+        a {
+            font-size: 40px;
+            line-height: 1;
+            color: $color__pt-pink;
+            text-decoration: none;
+        }
+    }
+    .instagram-text-link {
+        margin-top: 40px;
+        text-align: center;
+        @media screen and (min-width: $midwidth){
+            margin-top: 60px;
+        }
+        a {
+            font-size: 14px;
+            padding: 15px 20px 13px;
+            background: #FFF;
+            &:hover {
+                color: #FFF;
+                background: $color__pt-pink;
             }
         }
     }

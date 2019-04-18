@@ -38,6 +38,7 @@ function bellaworks_setup() {
   register_nav_menus( array(
     'primary' => esc_html__( 'Primary', 'bellaworks' ),
     'sitemap' => esc_html__( 'Sitemap', 'bellaworks' ),
+    'footer' => esc_html__( 'Footer', 'bellaworks' ),
     'header-top' => esc_html__( 'Header Top', 'bellaworks' ),
   ) );
 

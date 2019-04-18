@@ -1,12 +1,38 @@
-.cap {
-	max-width: 1500px;
-	padding-right: 20px !important;
-	padding-left: 20px !important;
+* {
+	overflow-wrap: normal;
+    word-wrap: normal;
+    -ms-word-break: normal;
+    word-break: normal;
+    word-break: normal;
+    -ms-hyphens: none;
+    -moz-hyphens: none;
+    -webkit-hyphens: none;
+    hyphens: none;
+    page-break-inside: avoid;
+    box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+.wrapper:before,.wrapper:after,
+.clear:before, .clear:after { content: " "; display: table; }
+.wrapper, .clear { *zoom: 1; clear: both; }
+.wrapper {
+	max-width: 1200px;
+	width: 100%;
 	margin: 0 auto;
-	@media screen and (min-width: $midwidth){
-		padding-right: 4% !important;
-		padding-left: 4% !important;
-	}
+	padding-left: 20px;
+	padding-right: 20px;
+	position: relative;
+}
+a {
+	@include transition(all ease-out .3s);
+}
+.site {
+	overflow: hidden;
+	@include transition(all ease-out .3s);
+}
+body.open-menu .site {
+	transform: translateX(-80%);
 }
 .clear-bottom {
 	&:after {
@@ -85,335 +111,209 @@
 	  }
 	}
 }
+
 #masthead {
-	>.row-1 {
-		background-color: $color__pt-light-grey;
-		>.wrapper {
-			padding: 20px 0 30px 0;
-			text-align: center;
-			@media screen and (min-width: $midwidth){
-				padding: 20px 0;
-				@include flexbox();
-				@include flexbox-justify(flex-end);
-				@include flexbox-align-content(stretch);
-				@include flexbox-align-items(center);
+	position: relative;
+	z-index: 300;
+	.row-1 {
+		background: $color__pt-light-grey;
+		width: 100%;
+		float: left;
+		padding: 6px 0 4px;
+		position: relative;
+		z-index: 20;
+		.wrapper {
+			text-align: left;
+			@media screen and (min-width: $tabwidth){
+				text-align: right;
 			}
-			>.header-menu {
-				@media screen and (min-width: $tabwidth){
-					margin: 0 0 10px 0;
-				}
-				@media screen and (min-width: $midwidth){
-					margin: 0;
-				}
-				ul {
-					text-align: center;
-					margin: 0;
-					padding: 0;
-					li {
-						list-style-type: none;
-						margin: 0 0 10px 0;
-						@media screen and (min-width: $tabwidth){
-							display: inline-block;
-							margin: 0 15px;
-						}
-						a {
-							display: block;
-							color: inherit;
-							text-decoration: none;
-							font-size: 18px;
-						}
-					}
-				}
-			}
-			>.cart {
-				color: inherit;
-				margin: 0 10px;
-				display: inline-block;
-				font-size: 25px;
-				line-height: 1.2;
-				@media screen and (min-width: $midwidth){
-					margin: 0 20px 0 25px;
-				}
-			}
-			>#bella-search {
-				display: inline-block;
-				@media screen and (min-width: $midwidth){
-					margin: 0 0 0 10px;
-				}
-				&.toggled {
-					display: table;
-					margin: 10px auto 0 auto;
-					@media screen and (min-width: $midwidth){
-						display: inline-block;
-						margin: 0 10px;
-					}
-					>.search {
-						float: left;
-					}
-				}
-				>form {
-					display: none;
-					float: left;
-					input {
-						border: 1px solid $color__pt-grey;
-						float: left;
-						font-size: 16px;
-						padding: 5px 10px;
-						margin: 0 10px 0 0;
-						width: 150px;
-						@media screen and (min-width: $midwidth){
-							width: auto;
-						}
-					}
-				}
-				>.search {
-					display: block;
-					font-size: 25px;
-					line-height: 1.2;
-					margin: 0 10px;
-					@media screen and (min-width: $midwidth){
-						margin: 0 0 0 10px;
-					}
-				}
-      }
 		}
 	}
-	>.row-2 {
-		>.wrapper {
-			padding: 30px 0 20px 0;
+	.row-2 {
+		position: relative;
+		width: 100%;
+		float: left;
+		height: 66px;
+		z-index: 20;
+		@media screen and (min-width: $tabwidth){
+			height: auto;
+			margin-bottom: 20px;
+		}
+		.wrapper {
 			@media screen and (min-width: $tabwidth){
 				@include flexbox();
-				@include flexbox-justify(space-between);
-				@include flexbox-align-content(flex-start);
-				@include flexbox-align-items(flex-start);
-			}
-			@media screen and (min-width: $deskwidth){
-				@include flexbox-align-content(flex-end);
+				@include flexbox-wrap(wrap);
+				@include flexbox-direction(row);
 				@include flexbox-align-items(flex-end);
-				padding: 30px 0 40px 0;
-			}
-			>.logo {
-				margin: -50px 0 10px 0;
-				@media screen and (min-width: $tabwidth){
-					margin: -50px 0 -15px 0;
-					width: 20%;
-				}
-				a {
-					display: block;
-					img {
-						float: left;
-						max-width: 120px;
-						min-width: 80px;
-						display: block;
-						@media screen and (min-width: $deskwidth){
-								width: 100%;
-								float: none;
-						}
-					}
-				}
-			}
-			>#site-navigation {
-				text-align: center;
-				@media screen and (min-width: $tabwidth){
-					padding: 0 0 0 20px;
-					float: left;
-					width: 80%;
-					text-align: right;
-				}
-				&.toggled {
-					>button {
-						display: block;
-					}
-				}
-				>button {
-					border: 1px solid $color__pt-grey;
-					display: none;
-					font-size: 18px;
-					padding: 5px 10px;
-					background-color: white;
-				}
-				>div {
-					ul {
-						margin: 0;
-						padding: 0;
-						li {
-							list-style-type: none;
-							margin: 0 0 10px 0;
-							@media screen and (min-width: $deskwidth){
-								display: inline-block;
-								margin: 0 15px;
-							}
-							&:last-child {
-								margin-right: 0;
-								margin-bottom: 0;
-							}
-							a {
-								display: block;
-								color: inherit;
-								text-transform: uppercase;
-								text-decoration: none;
-								font-size: 18px;
-							}
-						}
-					}
-				}
 			}
 		}
 	}
-}
-#colophon {
-	border-top: 4px solid $color__pt-grey;
-	>.row-1 {
-		background-color: $color__pt-medium-grey;
-		>.wrapper {
-			padding: 40px 0;
-				@media screen and (min-width: $midwidth){
-					@include flexbox();
-					@include flexbox-justify(space-between);
-					@include flexbox-align-content(flex-start);
-					@include flexbox-align-items(flex-start);
-					padding: 5% 0;
-				}
-			>.col {
-				margin: 40px 0 0 0;
-				text-align: center;
-				@media screen and (min-width: $midwidth){	
-					width: 26%;
-					margin: 0;
-					text-align: left;
-				}
-				&:first-child {
-					margin-top: 0;
-				}
-				>a {
-					display: block;
-					text-decoration: none;
-					color: inherit;	
-					margin: 15px 0;
-					font-size: 16px;
-					font-weight: 300;
-					text-transform: uppercase;
-				}
-			}
-			.address-line-1 {
-				margin: 15px 0 0 0;
-				font-size: 16px;
-				font-weight: 300;
-				text-transform: uppercase;
-			}
-			.address-line-2 {
-				margin: 0 0 15px 0;
-				font-size: 16px;
-				font-weight: 300;
-				text-transform: uppercase;
-			}
-			header {
-				border-bottom: 2px solid $color__pt-grey;
-				max-width: 500px;
-				margin: 0 auto;
-				h2 {
-					margin: 0;
-					font-weight: 300;
-					font-size: 30px;
-				}
-			}
-			.social {
-				margin: 15px 0 40px 0;
-				a {
-					display: inline-block;
-					color: inherit;
-					text-decoration: none;
-					font-size: 30px;
-					margin: 0 22px;
-					&:first-child {
-						margin-left: 0;
-					}
-					&:last-child {
-						margin-right: 0;
-					}
-				}
-			}
-			ul {
-				margin: 0;
-				padding: 0;
-				li {
-					display: block;
-					list-style-type: none;
-					a {
-						display: block;
-						text-decoration: none;
-						color: inherit;
-						margin: 15px 0;
-						font-size: 16px;
-						font-weight: 300;
-						text-transform: uppercase;
-					}
-				}
-			}
+	.logo {
+		display: inline-block;
+		width: 50px;
+		position: relative;
+		margin: 8px 0 4px;
+		@media screen and (min-width: $tabwidth){
+			width: 95px;
+			float: left;
+			margin: -25px 0 0 0;
 		}
-	}
-	>.row-2 {
-		background-color: $color__pt-dark-grey;
-		>.wrapper {
-			text-align: center;
-			color: white;
-			font-size: 12px;
-			padding: 30px 0;
+		a,img {
+			display: block;
+			width: 100%;
+			height: auto;
+			float: left;
 		}
-	}
-}
-li.type-product {
-	background-color: white;
-	list-style-type: none;
-	display: block;
-	padding: 20px;
-	text-align: center;
-	@media screen and (min-width: $tabwidth){
-		@include flexbox();
-		@include flexbox-justify(flex-start);
-		@include flexbox-align-content(center);
-		@include flexbox-align-items(center);
-		@include flexbox-direction(column);
-	}
-	img {
-		width: 70%;
-		margin: 0 auto;
-		display: block;
-	}
-	h2 {
-		font-size: 14px;
-		font-weight: 500;
-		margin: 40px 0 0 0;
-		text-transform: uppercase;
-	}
-	.woocommerce-loop-product__link {
-		color: inherit;
-		text-decoration: none;
-		display: block;
-		margin: 0 0 30px 0;
-	}
-	.price {
-		text-align: center;
-		font-size: 14px;
-		margin: 10px 0 0 0;
-		display: block;
-	}
-	a.button {
-		margin: auto 0 0 0;
-		min-width: 70%;
-		font-weight: 500;
 	}
 }
 
 a.button {
-	background-color: white;
 	display: inline-block;
-	font-weight: 300;
-	max-width: 100%;
-	font-size: 12px;
-	text-transform: uppercase;
 	color: $color__pt-pink;
-	text-decoration: none;
-	padding: 10px 20px;
 	border: 1px solid $color__pt-pink;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: 1.3;
+	background: #FFF;
+	&:hover {
+		color: #FFF;
+		background: $color__pt-pink;
+	}
+}
+
+.site-footer {
+	border-top: 4px solid #d0d0d0;
+	background: $color__subtle_grey;
+	.row-1 {
+		padding-top: 30px;
+		padding-bottom: 30px;
+		@media screen and (min-width: $tabwidth){
+			padding-top: 60px;
+			padding-bottom: 60px;
+		}
+		.row {
+			@media screen and (min-width: $tabwidth){
+				margin-left: -5%;
+				margin-right: -5%;
+			}
+		}
+		.col {
+			font-size: 14px;
+			line-height: 1.3;
+			box-sizing: border-box;
+			text-transform: uppercase;
+			margin: 28px 0;
+			@media screen and (min-width: $tabwidth){
+				width: 33.3%;
+				float: left;
+				padding-left: 5%;
+				padding-right: 5%;
+				margin: 18px 0;
+			}
+		}
+		header h2 {
+			margin: 0 0 15px;
+			padding-bottom: 4px;
+			font-size: 25px;
+			font-weight: 300;
+			line-height: 1.3;
+			color: $color__text-main;
+			border-bottom: 1px solid $color__text-main;
+			text-transform: none;
+		}
+		.col a {
+			text-decoration: none;
+			color: $color__text-main;
+			text-transform: uppercase;
+			&:hover {
+				opacity: 0.5;
+			}
+		}
+	}
+	.row-2 {
+		background: #6e6e6e;
+		color: #FFF;
+		text-align: center;
+		font-size: 12px;
+		line-height: 1.3;
+    	padding: 20px 0;
+	}
+	.footinfo {
+		margin-bottom: 10px;
+	}
+	.footer-menu-wrap {
+		ul {
+			margin: 0 0;
+			padding: 0 0;
+			list-style: none;
+			li ul {
+				display: none;
+			}
+		}
+		a {
+			display: inline-block;
+			padding: 5px 0;
+		}
+	}
+	.social {
+		margin-bottom: 30px;
+	}
+	.social a {
+		display: inline-block;
+		font-size: 20px;
+		line-height: 1.3;
+		margin-right: 10px;
+		@media screen and (min-width: $tabwidth){
+			font-size: 25px;
+			margin-right: 18px;
+		}
+	}
+	.newslettertext {
+		font-size: 13px;
+		line-height: 1.4;
+		margin-bottom: 12px;
+	}
+	.formdiv form {
+		display: block;
+		width: 100%;
+		position: relative;
+		input[type="text"],
+		input[type="email"] {
+			width: 100%;
+			box-sizing: border-box;
+			height: 34px;
+			line-height: 34px;
+			font-size: 16px;
+			border:1px solid #ccc;
+			background: #FFF;
+			border-radius: 0px;
+			padding: 0 10px;
+			-webkit-appearance: none;
+			outline: none;
+			@include transition(all ease-out .3s);
+			&:focus {
+				border: 1px solid #919191;
+				box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+			}
+		}
+		input[type="submit"] {
+			-webkit-appearance: none;
+			outline: none;
+			border: 1px solid $color__pt-pink;
+			background: #FFF;
+			box-shadow: none;
+			text-shadow: none;
+			text-transform: uppercase;
+			border-radius: 0px;
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: 2;
+			padding: 0 16px;
+    		font-size: 14px;
+    		color: $color__pt-pink;
+    		height: 34px;
+		}
+	}
 }

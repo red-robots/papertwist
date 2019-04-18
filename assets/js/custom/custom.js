@@ -83,14 +83,15 @@ jQuery(document).ready(function ($) {
 	------------------------------------*/
 	new WOW().init();
 
-	$('#bella-search >.search').click(function(){
-		$('#bella-search >form').toggle(200);
-		var $search = $('#bella-search');
-		if($search.hasClass('toggled')){
-			$search.removeClass('toggled');
-		} else {
-			$search.addClass('toggled');
-		}
+	$('.hide-field .search-icon').click(function(e){
+		e.preventDefault();
+		$(".topsearchform").removeClass('hide-field').addClass('show-field');
+		$(".topsearchform input.searchfield").focus();
+	});
+
+	$(document).on("click",".closemenu",function(){
+		$('body').toggleClass('open-menu');
+		$('.mobilemenuwrap').toggleClass('open');
 	});
 
 });// END #####################################    END

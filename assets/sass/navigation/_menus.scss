@@ -1,0 +1,245 @@
+.header-menu {
+	display: block;
+	@media screen and (min-width: $tabwidth){
+		display: inline-block;
+		float: left;
+	}
+	ul {
+		margin: 0 0;
+		padding: 0 0;
+		list-style: none;
+		li ul {
+			display: none;
+		}
+		li {
+			float: left;
+		}
+	}
+	a {
+		display: inline-block;
+		text-decoration: none;
+		color: $color__text-main;
+		font-size: 13px;
+		line-height: 1.3;
+		padding: 5px 0;
+		@media screen and (min-width: $tabwidth){
+			padding: 5px 10px;
+		}
+		&:hover {
+			opacity: 0.4;
+		}
+	}
+	.menu {
+		display: none;
+		@media screen and (min-width: $tabwidth){
+			display: inline-block;
+			float: left;
+		}
+	}
+}
+.main-navigation {
+	display: none;
+	@media screen and (min-width: $tabwidth){
+		display: block;
+		position: absolute;
+		right: 5px;
+		bottom: 3px;
+	}
+	ul {
+		margin: 0 0;
+		padding: 0 0;
+		list-style: none;
+	}
+	li {
+		position: relative;
+	}
+	.menu {
+		@media screen and (min-width: $tabwidth){
+			display: inline-block;
+			float: right;
+			text-align: right;
+		}
+		ul {
+			text-align: left;
+		}
+	}
+	.menu a {
+		text-decoration: none;
+		color: $color__text-main;
+		font-size: 14px;
+		line-height: 1.3;
+	}
+	.menu > li > a {
+		display: block;
+		text-transform: uppercase;
+		@media screen and (min-width: $tabwidth){
+			padding: 5px 15px;
+		}
+	}
+	.menu > li:hover > a {
+		@media screen and (min-width: $tabwidth){
+			color: #bfbdbd;
+		}
+	}
+	.menu > li.current-menu-item > a,
+	.menu > li.current-menu-item:hover > a {
+		@media screen and (min-width: $tabwidth){
+			color: $color__pt-pink;
+		}
+	} 
+	.menu > li {
+		@media screen and (min-width: $tabwidth){
+			display: inline-block;
+		}
+	}
+}
+
+.closeBtn {
+	display: block;
+	width: 35px;
+	height: 35px;
+	position: fixed;
+	top: 54px;
+    right: 20px;
+	cursor: pointer;
+	z-index: 320;
+	@include transition(all ease-out .3s);
+	@media screen and (min-width: $tabwidth){
+		display: none;
+	}
+	span,
+	span:before, span:after {
+		display: block;
+		width: 100%;
+		height: 3px;
+		background: #333;
+		position: absolute;
+		@include transition(all ease-out .3s);
+	}
+	span {
+		top: 16px;
+	}
+	span:before, span:after {
+		content:"";
+	}
+	span:before {
+		top: -10px;
+	}
+	span:after {
+		top: 10px;
+	}
+}
+body.open-menu .closeBtn {
+	right: 85.5%;
+	z-index: 510;
+	span,
+	span:before, span:after {
+		background: #FFF;
+	}
+	span {
+		background: transparent;
+	}
+	span:before {
+		transform: translateY(10px) rotate(45deg);
+	}
+	span:after {
+		transform: translateY(-10px) rotate(-45deg);
+	}
+}
+
+.mobilemenuwrap {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	right: 0;
+	visibility: hidden;
+	background: transparent;
+	z-index: 500;
+	@media screen and (min-width: $tabwidth){
+		display: none;
+	}
+	.mobilemenu {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 80%;
+		height: 100%;
+		background: $color__pt-pink;
+		transform: translateX(100%);
+		@include transition(all ease-out .3s);
+	}
+	span.close {
+		display: none;
+		width: 35px;
+		height: 35px;
+		position: absolute;
+		top: 17px;
+    	left: -56px;
+    	cursor: pointer;
+    	opacity: 0;
+    	@include transition(all ease-out .3s);
+		span,
+		span:before, span:after {
+			display: block;
+			width: 100%;
+			height: 3px;
+			background: #FFF;
+			position: absolute;
+		}
+		span {
+			background: transparent;
+			top: 16px;
+		}
+		span:before, span:after {
+			content:"";
+		}
+		span:before {
+			top: -10px;
+			transform: translateY(10px) rotate(45deg);
+		}
+		span:after {
+			top: 10px;
+			transform: translateY(-10px) rotate(-45deg);
+		}
+	}
+	&.open {
+		visibility: visible;
+		background: rgba(0,0,0,.85);
+		.mobilemenu {
+			transform: translateX(0);
+		}
+		span.close {
+			opacity: 1;
+		}
+	}
+}
+
+.navwrap {
+	padding: 30px 30px 0;
+	ul {
+		margin: 0 0;
+		padding: 0 0;
+		list-style: none;
+	}
+	li {
+		position: relative;
+	}
+	.menu {
+		margin: 0 0;
+	}
+	.menu a {
+		display: block;
+		text-decoration: none;
+		color: #FFF;
+		font-size: 16px;
+		line-height: 1.4;
+		padding: 7px 0;
+	}
+	.menu > li > a {
+		border-bottom: 1px solid rgba(255,255,255,0.8);
+	}
+	.current-menu-item > a {
+		color: rgba(255,255,255,0.5);
+	}
+}

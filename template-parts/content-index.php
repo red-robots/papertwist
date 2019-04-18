@@ -6,90 +6,85 @@
  *
  * @package bellaworks
  */
-
+$home_page_id = get_home_page_id();
+$post = get_post($home_page_id);
+setup_postdata($post);
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class("template-index"); ?>>
-    <?php $flexslider = get_field("flexslider");
-    if($flexslider):?>
-        <section class="row-1">
-            <div class="flexslider">
-                <ul class="slides">
-                    <?php foreach($flexslider as $slide):?>
-                        <?php $image = $slide['image'];
-                        if($image):?>
-                            <li><img src="<?php echo $image['url'];?>" alt="<?php echo $image['alt'];?>"></li>
-                        <?php endif;?>
-                    <?php endforeach;?>
-                </ul><!--.slides-->
-            </div><!--.flexslider-->
-        </section><!--.row-1-->
-    <?php endif;?>
-    <?php $args = array(
-        'post_type'             => 'product',
-        'post_status'           => 'publish',
-        'posts_per_page'        => 4,
-        'order'=>'ASC',
-        'orderby'=>'rand',
-        'tax_query' => array(
-            'relation'=>'AND',       
-            array(
-                'taxonomy'=>'product_visibility',
-                'field'=>'slug',
-                'terms'=>array('exclude-from-catalog','exclude-from-search'),
-                'operator'=>'NOT IN'
-            ),
-            array(
-                'taxonomy' => 'product_visibility',
-                'field'    => 'name',
-                'terms'    => 'featured',
-                'operator' => 'IN',
-            )
-        )
-    );
-    $query = new WP_Query($args);
-    if($query->have_posts()):?>
-        <section class="row-2">
-            <div class="wrapper cap clear-bottom">
-                <ul>
-                    <?php while($query->have_posts()):$query->the_post();?>
-                        <?php wc_get_template_part( 'content', 'product' ); ?>
-                    <?php endwhile;?>
-                </ul>
-            </div><!--.wrapper.cap-->
-        </section><!--.section-2-->
-        <?php wp_reset_postdata();
-    endif;?>
-    <?php $post = get_post(22);
-	setup_postdata($post);
-    $repeater = get_field("row_3_images");
-    if($repeater):?>
-        <section class="row-3">
-            <div class="wrapper cap clear-bottom">
-                <?php foreach($repeater as $row):
+<article id="post-<?php the_ID(); ?>" <?php post_class("template-index clear"); ?>>
+    <?php
+    /* ROW 2 - FEATURED PRODUCTS */
+    $featured_products = get_field('home_featured_products',$home_page_id);
+    if($featured_products) { 
+        $product_ids = array();
+        foreach($featured_products as $pid) {
+            $product_ids[] = $pid;
+        } 
+        $args = array(
+            'posts_per_page'=> -1,
+            'post_type'     => 'product',
+            'post_status'   => 'publish',
+            'post__in'      => $product_ids,
+            'orderby'       => 'post__in',
+            'order'         => 'ASC'
+        );
+        $query = new WP_Query($args);
+        if($query->have_posts()) { ?>
+        <section class="row-2 home-featured-products section clear">
+            <div class="wrapper">
+                <div class="productrow clear">
+                    <ul class="productlist">
+                        <?php while($query->have_posts()):$query->the_post();?>
+                            <?php wc_get_template_part( 'content', 'product' ); ?>
+                        <?php endwhile;?>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <?php } ?>
+    <?php } ?>
+
+    <?php
+    /* ROW 3 - IMAGES */
+    $row_3_images = get_field("row_3_images",$home_page_id);
+    if($row_3_images) { ?>
+        <section class="row-3 row-3-images section clear">
+            <div class="wrapper">
+                <div class="flexrow clear">
+                <?php foreach($row_3_images as $row) {
                     $image = $row['image'];
+                    $imagelink = $row['imagelink'];
                     if($image):?>
+                    <div class="flexbox">
+                        <?php if ($imagelink) { ?><a class="imagelink" href="<?php echo $imagelink ?>"><?php } ?>
                         <img src="<?php echo $image['sizes']['large'];?>" alt="<?php echo $image['alt'];?>">
+                        <?php if ($imagelink) { ?></a><?php } ?>
+                    </div>
                     <?php endif;?>
-                <?php endforeach;?>
+                <?php } ?>
+                </div>
             </div><!--.wrapper.cap-->
         </section><!--.row-3-->
-    <?php endif;?>
-    <section class="row-4">
-        <div class="wrapper cap">
-            <div class="row-1">
-                <i class="fab fa-instagram"></i>
-            </div><!--.row-1-->
-            <div class="row-2">
-                <?php // echo do_shortcode("[instagram-feed]");?>
-            </div><!--.row-2-->
-            <?php $instagram_link = get_field("instagram_link","option");
+    <?php } ?>
+
+    <?php /* INSTAGRAM FEEDS */ ?>
+    <section id="instagram_section" class="section instagram-feeds-section clear">
+        <div class="wrapper">
+            <?php 
+            $instagram_link = get_field("instagram_link","option");
             $instagram_text = get_field("instagram_text","option");
-            if($instagram_link&&$instagram_text):?>
-                <div class="row-3">
-                    <a class="button" href="<?php echo $instagram_link;?>"><?php echo $instagram_text;?></a>
-                </div><!--.row-3-->
-            <?php endif;?>
-        </div><!--.wrapper.cap-->
-    </section><!--.row-4-->
-</article><!-- #post-## -->
+            if($instagram_link&&$instagram_text) { ?>
+            <div class="instagram-icon">
+                <a class="icon" href="<?php echo $instagram_link;?>" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            <?php } ?>
+            <div id="instagram_feeds" class="flexrow clear"></div>
+            <?php if($instagram_link&&$instagram_text) { ?>
+                <div class="instagram-text-link">
+                    <a class="button" href="<?php echo $instagram_link;?>" target="_blank"><?php echo $instagram_text;?></a>
+                </div>
+            <?php } ?>
+        </div>
+    </section>
+
+</article>
