@@ -14,7 +14,7 @@
 
 get_header(); ?>
 
-	<div id="primary" class="full-content-area clear">
+	<div id="primary" class="full-content-area default-template clear">
 		<main id="main" class="site-main clear" role="main">
 
 			<?php

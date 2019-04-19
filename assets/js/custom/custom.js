@@ -48,10 +48,10 @@ jQuery(document).ready(function ($) {
 	*	Colorbox
 	*
 	------------------------------------*/
-	$('a.gallery').colorbox({
+	$('a.gallery, .woocommerce-product-gallery__image a').colorbox({
 		rel:'gal',
-		width: '80%', 
-		height: '80%'
+		maxWidth: '95%',
+		maxHeight: '95%'
 	});
 	
 	/*

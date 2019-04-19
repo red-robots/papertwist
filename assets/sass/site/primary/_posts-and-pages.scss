@@ -165,6 +165,11 @@ body.home {
         padding: 0 0;
     }
 }
+.default-template {
+    .site-main {
+        min-height: 25em;
+    }
+}
 
 .slider-wrapper {
     overflow: hidden;
