@@ -19,6 +19,9 @@ defined( 'ABSPATH' ) || exit;
 
 get_header( 'shop' );
 
+$obj = get_queried_object();
+$term_image = ( isset($obj->term_id) ) ? get_field('featured_image',$obj) : '';
+
 /**
  * Hook: woocommerce_before_main_content.
  *
@@ -26,9 +29,17 @@ get_header( 'shop' );
  * @hooked woocommerce_breadcrumb - 20
  * @hooked WC_Structured_Data::generate_website_data() - 30
  */
+remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb',20 );
 do_action( 'woocommerce_before_main_content' );
-
 ?>
+
+<?php /* CATEGORY FEATURED IMAGE */ ?>
+<?php if ($term_image) { ?>
+	<div class="category-feat-image clear">
+		<img src="<?php echo $term_image['url']; ?>" alt="<?php echo $term_image['title']; ?>" />
+	</div>	
+<?php } ?>
+
 <header class="woocommerce-products-header">
 	<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 		<h1 class="woocommerce-products-header__title page-title"><?php woocommerce_page_title(); ?></h1>
@@ -54,6 +65,8 @@ if ( woocommerce_product_loop() ) {
 	 * @hooked woocommerce_result_count - 20
 	 * @hooked woocommerce_catalog_ordering - 30
 	 */
+	remove_action( 'woocommerce_before_shop_loop','woocommerce_result_count',20 );
+	remove_action( 'woocommerce_before_shop_loop','woocommerce_catalog_ordering',30 );
 	do_action( 'woocommerce_before_shop_loop' );
 
 	woocommerce_product_loop_start();
@@ -102,6 +115,10 @@ do_action( 'woocommerce_after_main_content' );
  *
  * @hooked woocommerce_get_sidebar - 10
  */
-do_action( 'woocommerce_sidebar' );
+
+//do_action( 'woocommerce_sidebar' );
+remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+add_action( 'woocommerce_sidebar', 'woocustom_single_sidebar');
+do_action( 'woocommerce_sidebar', 'woocustom_single_sidebar',15 );
 
 get_footer( 'shop' );

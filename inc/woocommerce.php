@@ -11,7 +11,7 @@ if(!function_exists('woocommerce_support')){
 
 if(!function_exists('woocustom_single_sidebar')){ 
 	function woocustom_single_sidebar() {
-		wc_get_template( 'single-product/sidebar.php' );
+		wc_get_template( 'sidebar.php' );
 	}
 }
 

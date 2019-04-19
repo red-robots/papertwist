@@ -35,6 +35,9 @@ a,.button, button, input[type="submit"] {
 	overflow: hidden;
 	@include transition(all ease-out .3s);
 }
+.site-content {
+	position: relative;
+}
 body.open-menu .site {
 	transform: translateX(-80%);
 }
@@ -320,4 +323,12 @@ a.button {
     		height: 34px;
 		}
 	}
+}
+h1.entry-title,
+h1.page-title {
+	font-size: 25px;
+	font-weight: 500;
+	line-height: 1.3;
+	text-transform: uppercase;
+	margin: 0 0 20px;
 }

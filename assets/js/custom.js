@@ -94,4 +94,8 @@ jQuery(document).ready(function ($) {
 		$('.mobilemenuwrap').toggleClass('open');
 	});
 
+	$(document).on("click",".sbprodcatname",function(){
+		$(this).parents(".product-cat-parent").find('ul.termchildren').slideToggle("fast");
+	});
+
 });// END #####################################    END
