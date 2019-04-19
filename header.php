@@ -57,14 +57,12 @@
 						</a>
 					</nav>
 					<?php 
-						$search_string =  ( isset($_GET['search']) && $_GET['search'] ) ? $_GET['search'] : ''; 
+						$search_string =  ( isset($_GET['s']) && $_GET['s'] ) ? $_GET['s'] : ''; 
 						$stripped = preg_replace('/\s/', '', $search_string);
 						$search_string = ($stripped) ? $search_string : '';
 					?>
 					<div id="bella-search" class="clear-bottom topsearchform <?php echo ($search_string) ? 'show-field':'hide-field'; ?>">
-						<form action="" method="GET">
-							<input type="text" name="search" class="searchfield" placeholder="" value="<?php echo $search_string ?>" />
-						</form>
+						<?php echo get_product_search_form(); ?>
 						<span class="search-icon"><span class="icon"><i class="far fa-search"></i></span></span><!--.search-->
 					</div>
 				</div>

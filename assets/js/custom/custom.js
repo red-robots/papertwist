@@ -86,7 +86,7 @@ jQuery(document).ready(function ($) {
 	$('.hide-field .search-icon').click(function(e){
 		e.preventDefault();
 		$(".topsearchform").removeClass('hide-field').addClass('show-field');
-		$(".topsearchform input.searchfield").focus();
+		$(".topsearchform input.search-field").focus();
 	});
 
 	$(document).on("click",".closemenu",function(){

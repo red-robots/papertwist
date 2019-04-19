@@ -852,11 +852,12 @@ h1.entry-title,h1.page-title{font-size:25px;font-weight:500;line-height:1.3;text
 }.topwrap a.cart span.cart-total-qty{display:inline-block;position:absolute;top:-4px;right:0;background:#f25198;color:#FFF;padding:4px 5px 4px;font-size:11px;font-weight:300;line-height:9px;border-radius:100%}
 .topsearchform{position:relative;width:60%;position:absolute;top:0;right:13px;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 @media screen and (min-width:600px){.topsearchform{display:inline-block;float:left;position:relative;width:25px;margin-left:1px;right:0}
-}.topsearchform input.searchfield{border-radius:200px;-webkit-appearance:none;font-size:13px;height:26px;line-height:25px;box-sizing:border-box;padding:0 10px;outline:0;position:relative;right:0;width:100%;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
-@media screen and (min-width:600px){.topsearchform input.searchfield{position:absolute;top:-1px;right:-7px;border:1px solid transparent;background:transparent;z-index:-99;opacity:0;width:0}
-}.topsearchform input.searchfield:focus{box-shadow:0 0 6px 0 rgba(0,0,0,0.3)}
+}.topsearchform label,.topsearchform input[type="submit"],.topsearchform button{display:none !important}
+.topsearchform input.search-field{border-radius:200px;-webkit-appearance:none;font-size:13px;height:26px;line-height:25px;box-sizing:border-box;padding:0 10px;outline:0;position:relative;right:0;width:100%;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
+@media screen and (min-width:600px){.topsearchform input.search-field{position:absolute;top:-1px;right:-7px;border:1px solid transparent;background:transparent;z-index:-99;opacity:0;width:0}
+}.topsearchform input.search-field:focus{box-shadow:0 0 6px 0 rgba(0,0,0,0.3)}
 @media screen and (min-width:600px){.topsearchform.show-field{width:230px}
-.topsearchform.show-field input.searchfield{background:#FFF;border:1px solid #919191;opacity:1;width:100%;z-index:5}
+.topsearchform.show-field input.search-field{background:#FFF;border:1px solid #919191;opacity:1;width:100%;z-index:5}
 }.topsearchform .search-icon{display:inline-block;position:absolute;top:0;right:0;width:30px;height:100%;cursor:pointer;z-index:10;-webkit-transition:all ease-out .3s;transition:all ease-out .3s}
 .topsearchform .search-icon .icon{display:inline-block;position:relative;color:#CCC;font-size:15px;top:1px;right:-6px}
 @media screen and (min-width:600px){.topsearchform .search-icon .icon{color:#383838;font-size:16px;right:0}
