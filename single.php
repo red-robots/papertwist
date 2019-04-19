@@ -9,8 +9,8 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<div id="primary" class="content-area single-page-template">
+		<main id="main" class="site-main clear" role="main">
 
 		<?php
 		while ( have_posts() ) : the_post();
@@ -19,10 +19,10 @@ get_header(); ?>
 
 			the_post_navigation();
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+			// // If comments are open or we have at least one comment, load up the comment template.
+			// if ( comments_open() || get_comments_number() ) :
+			// 	comments_template();
+			// endif;
 
 		endwhile; // End of the loop.
 		?>

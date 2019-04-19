@@ -29,6 +29,7 @@ get_header( 'shop' ); ?>
 		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
 		 * @hooked woocommerce_breadcrumb - 20
 		 */
+		remove_action( 'woocommerce_before_main_content','woocommerce_breadcrumb',20 );
 		do_action( 'woocommerce_before_main_content' );
 	?>
 
@@ -53,7 +54,10 @@ get_header( 'shop' ); ?>
 		 *
 		 * @hooked woocommerce_get_sidebar - 10
 		 */
-		do_action( 'woocommerce_sidebar' );
+		//do_action( 'woocommerce_sidebar' );
+		remove_action( 'woocommerce_sidebar', 'woocommerce_get_sidebar', 10 );
+		add_action( 'woocommerce_sidebar', 'woocustom_single_sidebar');
+		do_action( 'woocommerce_sidebar', 'woocustom_single_sidebar',15 );
 	?>
 
 <?php get_footer( 'shop' );

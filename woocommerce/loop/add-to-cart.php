@@ -27,7 +27,8 @@ if( is_home() || is_front_page() ) { ?>
 		<a href="<?php echo get_permalink() ?>" class="button viewbutton">View</a>
 	</div>
 <?php
-} else {
+} else { 
+	
 	echo apply_filters( 'woocommerce_loop_add_to_cart_link', // WPCS: XSS ok.
 	sprintf( '<div class="buttondiv"><a href="%s" data-quantity="%s" class="%s" %s>%s</a></div>',
 		esc_url( $product->add_to_cart_url() ),

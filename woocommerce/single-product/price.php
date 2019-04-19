@@ -24,3 +24,4 @@ global $product;
 
 ?>
 <p class="price"><?php echo $product->get_price_html(); ?></p>
+<?php echo wc_get_stock_html( $product ); ?>

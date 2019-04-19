@@ -15,10 +15,10 @@ $home_page_id = get_home_page_id();
 get_header(); ?>
 <div id="primary" class="full-content-area clear">
 	<?php $post = get_post($home_page_id);
-		if ( $post ) :  setup_postdata($post);
-			get_template_part( 'template-parts/slider', 'home' );
-			get_template_part( 'template-parts/content', 'index' );
-		endif; ?>
+	if ( $post ) :  setup_postdata($post);
+		get_template_part( 'template-parts/slider', 'home' );
+		get_template_part( 'template-parts/content', 'index' );
+	endif; ?>
 </div><!-- #primary -->
 <?php
 get_footer();

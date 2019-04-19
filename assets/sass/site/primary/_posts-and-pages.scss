@@ -19,7 +19,28 @@
         float: right;
     }
     a.phone {
-        padding-left: 6px;
+        padding-left: 0;
+        padding-right: 10px;
+        @media screen and (min-width: $tabwidth){
+            padding-left: 6px;
+            padding-right: 0;
+        }
+        .icon {
+            display: inline-block;
+            font-size: 16px;
+            position: relative;
+            top: -1px;
+            transform: rotate(90deg);
+            @media screen and (min-width: $tabwidth){
+                display: none;
+            }
+        }
+        .num {
+            display: none;
+            @media screen and (min-width: $tabwidth){
+                display: inline-block;
+            }
+        }
     }
     a.myaccount {
         display: none;
@@ -30,17 +51,33 @@
     a.cart {
         display: inline-block;
         font-size: 16px;
-        padding: 4px 0;
+        padding: 4px 4px;
         position: relative;
+        &.hascontent {
+            top: 2px;
+        }
         @media screen and (min-width: $tabwidth){
             padding: 0 10px 0 6px;
             top: 1px;
+        }
+        span.cart-total-qty {
+            display: inline-block;
+            position: absolute;
+            top: -4px;
+            right: 0px;
+            background: $color__pt-pink;
+            color:#FFF;
+            padding: 4px 5px 4px;
+            font-size: 11px;
+            font-weight: 300;
+            line-height: 9px;
+            border-radius: 100%;
         }
     }
 }
 .topsearchform {
     position: relative;
-    width: 55%;
+    width: 60%;
     position: absolute;
     top: 0;
     right: 13px;
@@ -81,16 +118,15 @@
         }
     }
     &.show-field {
-        width: 100%;
         @media screen and (min-width: $tabwidth){
             width: 230px;
-        }
-        input.searchfield {
-            background:#FFF;
-            border: 1px solid #919191;
-            opacity: 1;
-            width: 100%;
-            z-index: 5;
+            input.searchfield {
+                background:#FFF;
+                border: 1px solid #919191;
+                opacity: 1;
+                width: 100%;
+                z-index: 5;
+            }
         }
     }
     .search-icon {
@@ -106,11 +142,12 @@
         .icon {
             display: inline-block;
             position: relative;
-            color: $color__text-main;
+            color: #CCC;
             font-size: 15px;
             top: 1px;
             right: -6px;
             @media screen and (min-width: $tabwidth){
+                color: $color__text-main;
                 font-size: 16px;
                 right: 0;
             }
@@ -132,7 +169,7 @@ body.home {
 .slider-wrapper {
     overflow: hidden;
     position: relative;
-    height: 330px;
+    height: 300px;
     @media screen and (min-width: $tabwidth){
         height: 400px;
     }
@@ -200,7 +237,7 @@ ul.productlist {
         @include flexbox-direction(row);
         @include flexbox-justify(center);
     }
-    li.product {
+    li {
         box-sizing: border-box;
         margin: 30px 0;
         @media screen and (min-width: $tabwidth){
@@ -218,6 +255,7 @@ ul.productlist {
         background: #FFF;
         position: relative;
         text-align: center;
+        border-bottom: 5px solid $color__medium_grey;
         @media screen and (min-width: $tabwidth){
             height: 100%;
             padding: 20px 20px 70px;
@@ -252,6 +290,7 @@ ul.productlist {
     span.price {
         display: block;
         width: 100%;
+        font-size: 13px;
     }
     a.button {
         display: inline-block;
@@ -260,9 +299,11 @@ ul.productlist {
         color: $color__pt-pink;
         text-transform: uppercase;
         font-size: 13px;
+        font-weight: 400;
         line-height: 1.2;
         padding: 9px 22px 8px;
         background: #FFF;
+        border-radius: 0px;
         &:hover {
             background: $color__pt-pink;
             color: #FFF;
@@ -276,11 +317,45 @@ ul.productlist {
         float: left;
         margin-top: 10px;
         margin-bottom: 10px;
+        position: relative;
         @media screen and (min-width: $tabwidth){
             position: absolute;
             bottom: 0;
             left: 0;
             margin-bottom: 25px;
+        }
+        &.viewbtndiv {
+            z-index: 10;
+        }
+    }
+}
+
+.related {
+    width: 100%;
+    float: left;
+    margin-top: 30px;
+    @media screen and (min-width: $tabwidth){
+        margin-top: 50px;
+    }
+    .section-title {
+        color: $color__text-main;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 1.3;
+        text-transform: uppercase;
+        margin: 0 0;
+    }
+    ul.productlist {
+        .product-inside {
+            border-top: 1px solid $color__medium_grey;
+            border-left: 1px solid $color__medium_grey;
+            border-right: 1px solid $color__medium_grey;
+        }
+        li {
+            width: 100%;
+            @media screen and (min-width: $tabwidth){
+                width: 33.3%;
+            }
         }
     }
 }
@@ -448,3 +523,213 @@ ul.productlist {
         }
     }
 }
+
+.woocommerce button.button.alt,
+.woocommerce button.button {
+    -webkit-appearance: none;
+    border: 1px solid $color__pt-pink;
+    text-transform: uppercase;
+    color: $color__pt-pink;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.2;
+    background-color: #FFF;
+    border-radius: 0px;
+    padding: 10px 20px 8px;
+    &:hover {
+        color: #FFF;
+        background: $color__pt-pink;
+    }
+}
+
+body.single-product {
+    .site-content {
+        position: relative;
+        margin-bottom: 50px;
+        @media screen and (min-width: $tabwidth){
+            margin-bottom: 70px;
+        }
+    }
+    .sidebargrey { 
+        @media screen and (min-width: $tabwidth){
+            display: block;
+            width: 33%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 20px;
+            background: $color__pt-light-grey;
+        }
+        @media screen and (min-width: $midwidth){
+            width: 24%;
+        }
+    }
+    #primary, #secondary {
+        position: relative;
+        z-index: 10;
+    }
+    #primary {
+        @media screen and (min-width: $tabwidth){
+            width: 60%;
+            float: right;
+            border-top: none;
+        }
+        @media screen and (min-width: $midwidth){
+            width: 70%;
+        }
+    }
+    #secondary {
+        background: $color__pt-light-grey;
+        @media screen and (min-width: $tabwidth){
+            width: 33%;
+            float: left;
+            background: transparent;
+        }
+        @media screen and (min-width: $midwidth){
+            width: 25%;
+        }
+    }
+    .woocommerce-product-gallery {
+        width: 100%;
+        border-bottom: 1px solid #CCC;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        float: left;
+        @media screen and (min-width: $tabwidth){
+            width: 45%;
+        }
+    }
+    .product_thumb {
+        width: 25%;
+        float: left;
+        box-sizing: border-box;
+        overflow: hidden;
+        @media screen and (min-width: $tabwidth){
+            width: 50%;
+        }
+        @media screen and (min-width: $midwidth){
+            width: 25%;
+        }
+        .woocommerce-product-gallery__image {
+            padding: 5px;
+        }
+        .woocommerce-product-gallery__image,a,img {
+            display: block;
+            width: 100%;
+            float: left;
+            height: auto;
+            box-sizing: border-box;
+        }
+        a {
+            overflow: hidden;
+            img {
+                border:1px solid $color__subtle_grey;
+            }
+        }
+    }
+    .entry-summary {
+        margin-bottom: 50px;
+        @media screen and (min-width: $tabwidth){
+            width: 48%;
+            float: right;
+            margin-bottom: 30px;
+        }
+        .price {
+            display: inline-block;
+            margin: 0 0;
+            padding-right: 10px;
+            font-size: 20px;
+            font-weight: 600;
+            color: $color__pt-pink;
+        }
+        .stock {
+            margin: 0 0;
+            display: inline-block;
+            font-size: 13px;
+            font-style: italic;
+        }
+    }
+    .product_title {
+        margin: 0 0 10px;
+        font-size: 25px;
+        font-weight: 400;
+        line-height: 1.2;
+        text-transform: uppercase;
+    }
+    .woocommerce-product-gallery__wrapper {
+        padding: 0 0;
+        margin: 0 0;
+    }
+    .woocommerce-product-gallery__image {
+        a.wp-post-image,
+        a.wp-post-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            float: left;
+        }
+    }
+    .product-info {
+        margin-top: 30px;
+    }
+    .quantity {
+        position: relative;
+        margin-bottom: 20px;
+        margin-top: 50px;
+        .screen-reader-text {
+            height: auto;
+            width: auto;
+            clip: unset;
+            top: 4px;
+        }
+        input.qty {
+            position: relative;
+            left: 75px;
+            border-radius: 0px;
+            outline: none;
+            -webkit-appearance: none;
+            height: 34px;
+            line-height: 32px;
+            width: 50px;
+        }
+    }
+
+}
+.widget-single-product {
+    .widget.product-cat-list {
+        margin: 0 0;
+        padding: 20px;
+    }
+    ul {
+        margin: 0 0;
+        padding: 0 0;
+        list-style: none;
+    }
+    li.product-cat-parent {
+        margin-bottom: 18px;
+    }
+    h3.catname {
+        text-transform: uppercase;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 1.3;
+        margin: 0 0;
+        padding: 5px 0;
+    }
+    ul.termchildren {
+        padding-left: 20px;
+        a {
+            text-decoration: none;
+            color: $color__text-main;
+            font-size: 14px;
+            line-height: 1.3;
+            display: block;
+            padding: 5px 0;
+            &:hover {
+                color: $color__pt-pink;
+            }
+        }
+    }
+}
+
+

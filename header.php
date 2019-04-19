@@ -31,16 +31,24 @@
 					$phone = str_replace('-','.',$phone);
 					$phone = preg_replace('/\s+/','',$phone);
 				}
+
+				global $woocommerce;
+				$cart_content = ( isset($woocommerce->cart) )  ?  $woocommerce->cart->cart_contents_count : '';
 				?>
 				<div class="topwrap">
 					<nav class="header-menu">
 						<?php wp_nav_menu( array( 'theme_location' => 'header-top','container'=>false ) ); ?>
 						<a class="myaccount" href="<?php echo wc_get_page_permalink( 'myaccount' ); ?>">My Account</a>
 						<?php if ($phone_number) { ?>
-						<a class="phone" href="tel:<?php echo $phone_number ?>"><?php echo $phone ?></a>	
+						<a class="phone" href="tel:<?php echo $phone_number ?>"><span class="icon"><i class="fas fa-phone"></i></span><span class="num"><?php echo $phone ?></span></a>	
 						<?php } ?>
-						<a class="cart" href="<?php echo wc_get_cart_url();?>"><i class="fal fa-shopping-cart"></i></a>
-					</nav><!--.header-menu-->
+						<a class="cart <?php echo ($cart_content) ? 'hascontent':'empty';?>" href="<?php echo wc_get_cart_url();?>">
+							<span class="icon"><i class="fal fa-shopping-cart"></i></span>
+							<?php if ($cart_content) { ?>
+								<span class="cart-total-qty"><span class="qnty"><?php echo $cart_content ?></span></span>
+							<?php } ?>
+						</a>
+					</nav>
 					<?php 
 						$search_string =  ( isset($_GET['search']) && $_GET['search'] ) ? $_GET['search'] : ''; 
 						$stripped = preg_replace('/\s/', '', $search_string);
@@ -51,7 +59,7 @@
 							<input type="text" name="search" class="searchfield" placeholder="" value="<?php echo $search_string ?>" />
 						</form>
 						<span class="search-icon"><span class="icon"><i class="far fa-search"></i></span></span><!--.search-->
-					</div><!--.search-->
+					</div>
 				</div>
 
 			</div><!--.wrapper-->
