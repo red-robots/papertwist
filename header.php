@@ -14,7 +14,14 @@
 <div class="mobilemenuwrap">
 	<div class="mobilemenu">
 		<span class="close closemenu"><span></span></span>
-		<nav class="navwrap"><?php wp_nav_menu( array( 'menu' => 'Mobile Menu', 'menu_id' => 'mobile-menu','container'=>false ) ); ?></nav>
+		<nav class="navwrap">
+			<?php wp_nav_menu( array( 'menu' => 'Mobile Menu', 'menu_id' => 'mobile-menu','container'=>false ) ); ?>
+			<?php if (is_user_logged_in()) { ?>
+			<ul class="menu menu-addon">
+				<li><a href="<?php echo get_site_url() ?>/my-account/customer-logout">Log Out</a></li>
+			</ul>		
+			<?php } ?>
+		</nav>
 	</div>
 </div>
 		
